@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<robot name="diff_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+  <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+    <ros>
+      <remapping>cmd_vel:=cmd_vel</remapping>
+      <remapping>odom:=odom</remapping>
+    </ros>
+
+    <left_joint>left_wheel</left_joint>
+    <right_joint>right_wheel</right_joint>
+
+    <wheel_separation>0.33</wheel_separation>
+    <wheel_diameter>0.20</wheel_diameter>
+
+    <max_wheel_torque>20.0</max_wheel_torque>
+    <max_wheel_acceleration>10.0</max_wheel_acceleration>
+
+    <publish_odom>true</publish_odom>
+    <publish_odom_tf>true</publish_odom_tf>
+    <publish_wheel_tf>true</publish_wheel_tf>
+
+    <odometry_frame>odom</odometry_frame>
+    <robot_base_frame>base_link</robot_base_frame>
+  </plugin>
+</gazebo>
+<gazebo reference="base_link">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="right_wheel_1">
+  <material>Gazebo/Black</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>100.0</kd>
+  <self_collide>false</self_collide>
+</gazebo>
+
+<gazebo reference="left_wheel_1">
+  <material>Gazebo/Black</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>100.0</kd>
+  <self_collide>false</self_collide>
+</gazebo>
+
+<gazebo reference="lidar_1">
+  <material>Gazebo/Red</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="camera_1">
+  <material>Gazebo/Black</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="castor_wheel_1">
+  <material>Gazebo/Black</material>
+  <mu1>0.001</mu1>
+  <mu2>0.001</mu2>
+  <self_collide>false</self_collide>
+</gazebo>
+
+
+</robot>

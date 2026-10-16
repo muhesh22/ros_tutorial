@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<joint name="camera" type="fixed">
+  <origin xyz="0.15 0.0 0.35" rpy="0 0.20 0"/>
+  <parent link="base_link"/>
+  <child link="camera_1"/>
+</joint>
+
+<link name="camera_1">
+  <inertial>
+    <origin xyz="-0.04000000000000001 9.860761315262648e-34 0.012499999999999983" rpy="0 0 0"/>
+    <mass value="0.02385"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.15 -0.0 -0.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.15 -0.0 -0.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+    <joint name="camera_optical_joint" type="fixed">
+        <parent link="camera_1"/>
+        <child link="camera_link_optical"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="camera_link_optical"></link>
+
+
+
+    <gazebo reference="camera_1">
+        <material>Gazebo/Black</material>
+
+        <sensor name="camera" type="camera">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <camera>
+                <horizontal_fov>1.089</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>640</width>
+                    <height>480</height>
+                </image>
+                <clip>
+                    <near>0.05</near>
+                    <far>8.0</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <frame_name>camera_link_optical</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>

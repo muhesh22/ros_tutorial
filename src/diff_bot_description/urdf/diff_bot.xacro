@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+<robot name="diff_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find diff_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find diff_bot_description)/urdf/diff_bot.trans" />
+<xacro:include filename="$(find diff_bot_description)/urdf/diff_bot.gazebo" />
+<xacro:include filename="$(find diff_bot_description)/urdf/lidar.xacro" />
+<xacro:include filename="$(find diff_bot_description)/urdf/camera.xacro" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.0001550322267581235 -2.127739672160312e-17 0.12593737077845393" rpy="0 0 0"/>
+    <mass value="14.498982506076695"/>
+    <inertia ixx="0.136029" iyy="0.135697" izz="0.215642" ixy="-0.0" iyz="-0.0" ixz="-5.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="0.0 -0.024999999999999994 0.0" rpy="0 0 0"/>
+    <mass value="1.4608405839192535"/>
+    <inertia ixx="0.003956" iyy="0.007304" izz="0.003956" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 0.165 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 0.165 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.0 0.024999999999999994 0.0" rpy="0 0 0"/>
+    <mass value="1.4608405839192535"/>
+    <inertia ixx="0.003956" iyy="0.007304" izz="0.003956" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 -0.165 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 -0.165 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="lidar_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.014999999999999986" rpy="0 0 0"/>
+    <mass value="0.2497566159603886"/>
+    <inertia ixx="0.000175" iyy="0.000175" izz="0.000312" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<!-- <link name="camera_1">
+  <inertial>
+    <origin xyz="-0.04000000000000001 9.860761315262648e-34 0.012499999999999983" rpy="0 0 0"/>
+    <mass value="0.02385"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.15 -0.0 -0.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.15 -0.0 -0.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="castor_wheel_1">
+  <inertial>
+    <origin xyz="0.09 6.168348473141367e-18 -0.019545454545454543" rpy="0 0 0"/>
+    <mass value="0.19536517515123722"/>
+    <inertia ixx="9.6e-05" iyy="9.6e-05" izz="0.000134" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/castor_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find diff_bot_description)/meshes/castor_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_wheel" type="continuous">
+  <origin xyz="-0.1 -0.165 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel" type="continuous">
+  <origin xyz="-0.1 0.165 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<!-- <joint name="lidar" type="fixed">
+  <origin xyz="0.0 0.0 0.22" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint> -->
+
+<!-- <joint name="camera" type="fixed">
+  <origin xyz="0.15 0.0 0.2" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_1"/>
+</joint> -->
+
+<joint name="castor_wheel" type="fixed">
+  <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="castor_wheel_1"/>
+</joint>
+
+</robot>
